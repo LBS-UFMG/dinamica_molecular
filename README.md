@@ -6,7 +6,7 @@ Este tutorial foi testado no macOS 14.0.
 Para outros sistemas operacionais, consulte os links indicados em cada parte do tutorial. Para este tutorial recomendamos que você use ChimeraX ou PyMOL para visualizar os resultados (presumimos que você já tem conhecimento em algum desses programas).
 
 
-**<h2>ATENÇÃO: veja o tutorial completo <a href="tutorial.pdf">aqui</a>.</h2>**
+**<h2 style="color:red; text-align: center;">ATENÇÃO: veja o tutorial completo <a href="tutorial.pdf">aqui</a>.</h2>**
 
 
 ## Passo 1 - instalando o GROMACS
@@ -109,8 +109,7 @@ Veja que nosso peptídeo está no meio da caixa d’água.
 
 Agora, precisaremos adicionar ions ao sistema (isso irá neutralizar o sistema). Crie um arquivo chamado “ions.mdp” e coloque o seguinte conteúdo:
 
-<code>
-; ions.mdp - used as input to grompp to generate ions.tpr
+<code>; ions.mdp - used as input to grompp to generate ions.tpr
 ; Parameters describing what to do, when to stop, and what to save
 integrator  = steep         ; Algorithm (steep = steepest descent minimization)
 emtol       = 1000.0        ; Stop minimization when the maximum force < 1000.0 kJ/mol/nm
@@ -142,8 +141,7 @@ Agora, vamos realizar a etapa de minimização de energia do sistema. Isso é im
 
 Crie um arquivo chamado “minim.mdp” e adicione o seguinte conteúdo:
 
-<code>
-; minim.mdp - used as input into grompp to generate em.tpr
+<code>; minim.mdp - used as input into grompp to generate em.tpr
 integrator	= steep		; Algorithm (steep = steepest descent minimization)
 emtol		= 1000.0  	; Stop minimization when the maximum force < 1000.0 kJ/mol/nm
 emstep      = 0.01      ; Energy step size
@@ -173,8 +171,7 @@ Agora, vamos equilibrar o solvente e os íons ao redor do peptídeo.
 
 Crie um arquivo chamado nvt.mdp e adicione o seguinte texto:
 
-<code>
-define		= -DPOSRES	; position restrain the protein
+<code>define		= -DPOSRES	; position restrain the protein
 ; Run parameters
 integrator	= md		; leap-frog integrator
 nsteps		= 50000		; 2 * 50000 = 100 ps
@@ -229,8 +226,7 @@ Isso irá levar aproximadamente 5 min para executar. Esse passo serve para estab
 
 Crie um arquivo chamado “npt.mdp” e coloque o seguinte texto:
 
-<code>
-define		= -DPOSRES	; position restrain the protein
+<code>define		= -DPOSRES	; position restrain the protein
 ; Run parameters
 integrator	= md		; leap-frog integrator
 nsteps		= 50000		; 2 * 50000 = 100 ps
@@ -292,8 +288,7 @@ Agora podemos finalmente executar a dinâmica.
 
 Crie um arquivo chamado “md.mdp” e adicione o seguinte texto:
 
-<code>
-; Run parameters
+<code>; Run parameters
 integrator	= md		; leap-frog integrator
 nsteps = 100000
 dt = 0.002
@@ -390,9 +385,7 @@ Dois arquivos serão criados:
 
 Agora, vamos criar um gráfico usando R. Execute o seguinte código no RStudio:
 
-<code>
-library(ggplot2)
-
+<code>library(ggplot2)
 rmsd = read.table(file = "rmsd.xvg", sep = "", dec = ".")
 ggplot(rmsd, aes(x = V1, y = V2)) + 
   geom_line(size = 0.75) + 
@@ -411,14 +404,11 @@ ggplot(rmsd, aes(x = V1, y = V2)) +
         plot.title = element_text(size = rel(2), hjust = 0.5)) +
   coord_cartesian(ylim = c(0, 0.7))
 ggsave("rmsd.png", dpi = 600, height = 5, width = 8)
-
 </code>
 
 Agora, para ver o gráfico de RMSF, use:
 
-<code>
-library(ggplot2)
-
+<code>library(ggplot2)
 rmsf = read.table(file = "rmsf_residue.xvg", sep = "", dec = ".")
 ggplot(rmsf, aes(x = V1, y = V2)) + 
   geom_line(size = 0.75) +

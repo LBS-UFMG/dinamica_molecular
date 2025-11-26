@@ -6,5 +6,5 @@ Este tutorial foi testado no macOS 14.0.
 Para outros sistemas operacionais, consulte os links indicados em cada parte do tutorial. Para este tutorial recomendamos que você use ChimeraX ou PyMOL para visualizar os resultados (presumimos que você já tem conhecimento em algum desses programas).
 
 
-**<h2 style="color:red; text-align: center;">TUTORIAL DO GROMACS: <a href="GROMACS/tutorial_gromacs.pdf">donwload</a>.</h2>**
+**<h2 style="color:red; text-align: center;">TUTORIAL DO GROMACS: <a href="GROMACS/tutorial_gromacs.pdf">download</a>.</h2>**
 
